@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CNFlix - Diversão Cristã</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #f4f9ff;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(45deg, #ffb6c1, #add8e6, #98fb98, #ffffff);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    .logo {
+      font-size: 2.8rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #ff69b4, #00bfff, #32cd32);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+    .slogan {
+      font-size: 1.1rem;
+      color: #333;
+      margin-top: 0.5rem;
+    }
+    .section {
+      padding: 1.5rem;
+    }
+    h2 {
+      margin-bottom: 1rem;
+    }
+    .filter-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .filter-buttons button {
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #4a90e2;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .carousel {
+      display: none;
+      overflow-x: auto;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
+    .carousel.active {
+      display: flex;
+    }
+    .carousel iframe {
+      flex: 0 0 auto;
+      width: 300px;
+      height: 170px;
+      border-radius: 10px;
+      border: none;
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    .coloring a {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      color: #4a90e2;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .coloring img {
+      max-width: 100%;
+      border-radius: 5px;
+      margin-bottom: 0.5rem;
+    }
+    .games iframe {
+      width: 100%;
+      height: 250px;
+      border: none;
+      border-radius: 10px;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+    ::-webkit-scrollbar {
+      height: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4a90e2;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 class="logo">CNFlix</h1>
+  <p class="slogan">Diversão Cristã com Amor e Propósito</p>
+</header>
+
+<section class="section">
+  <h2>🎬 Vídeos Cristãos por Idade</h2>
+  <div class="filter-buttons">
+    <button onclick="showAgeGroup('age0')">0–4 anos</button>
+    <button onclick="showAgeGroup('age1')">5–8 anos</button>
+    <button onclick="showAgeGroup('age2')">9–12 anos</button>
+  </div>
+  <div id="age0" class="carousel">
+    <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" allowfullscreen></iframe>
+  </div>
+  <div id="age1" class="carousel">
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/2Vv-BfVoq4g" allowfullscreen></iframe>
+  </div>
+  <div id="age2" class="carousel">
+    <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/kXYiU_JCYtU" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section class="section coloring">
+  <h2>🎨 Desenhos para Colorir</h2>
+  <div class="content-grid">
+    <a href="desenhos/jesus1.pdf" download>
+      <img src="desenhos/thumb_jesus1.png" alt="Jesus com crianças">
+      Jesus com crianças
+    </a>
+    <a href="desenhos/arca_noe.pdf" download>
+      <img src="desenhos/thumb_arca.png" alt="Arca de Noé">
+      Arca de Noé
+    </a>
+    <a href="desenhos/cruz.pdf" download>
+      <img src="desenhos/thumb_cruz.png" alt="Cruz e coração">
+      Cruz e Coração
+    </a>
+  </div>
+</section>
+
+<section class="section games">
+  <h2>🕹️ Jogos Educativos</h2>
+  <div class="content-grid">
+    <iframe src="https://www.cucafera.com.br/jogos/jogo-da-memoria-biblico/" title="Jogo da Memória Bíblico"></iframe>
+    <iframe src="https://www.escolagames.com.br/jogos/adivinha-a-palavra" title="Adivinhe a Palavra Cristã"></iframe>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 CNFlix | Plataforma cristã para crianças com conteúdo saudável
+</footer>
+
+<script>
+  function showAgeGroup(groupId) {
+    const carousels = document.querySelectorAll('.carousel');
+    carousels.forEach(carousel => {
+      carousel.classList.remove('active');
+    });
+    document.getElementById(groupId).classList.add('active');
+  }
+  window.onload = () => showAgeGroup('age0');
+</script>
+
+</body>
+</html>
